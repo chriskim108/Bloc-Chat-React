@@ -25,8 +25,8 @@ class RoomList extends Component{
             <div>   
                 <h1> Hello </h1>
                 {
-                    this.state.rooms.map( (data) => 
-                    <div>
+                    this.state.rooms.map( (data, index) => 
+                    <div key={index}>
                         {
                             console.log(data)
                         }

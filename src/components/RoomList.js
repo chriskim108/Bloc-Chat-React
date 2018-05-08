@@ -23,16 +23,17 @@ class RoomList extends Component{
     render(){
         return(
             <div>   
-                <h1> Hello </h1>
+
                 {
                     this.state.rooms.map( (data, index) => 
-                    <div key={index}>
-                        {
-                            console.log(data)
-                        }
-                    </div>
-                )
+                        <div key={index}>
+                            <p>
+                                {data.name}
+                            </p>
+                        </div>
+                    ) 
                 }
+
             </div>
         )
     }

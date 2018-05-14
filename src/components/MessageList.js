@@ -23,7 +23,7 @@ class MessageList extends Component{
         e.preventDefault();
         // Retriving the values from the input tag
         let newContent = this.refs.messageOfRoom.value;
-        let newRoomId = this.props.activeRoom;
+        let newRoomId = this.props.activeRoom;        
         let newSentAt = this.props.firebase.database.ServerValue.TIMESTAMP; 
         
         // Pushing it to FireBase
@@ -37,12 +37,16 @@ class MessageList extends Component{
     }
 
     render(){
+
+        let filteredMessages = this.state.messages.filter(message => message.roomId === this.props.activeRoom);
+        console.log("Filtered " + this.state.messages.length + " messages down to " + filteredMessages.length + " active messages.");
+
         return(
             <div>
 
                 <h1>Created Messages</h1>
                 {
-                    this.state.messages.map( (data, index) => 
+                    filteredMessages.map( (data, index) => 
                         <div key={index}>
                             {data.content}
                         </div>

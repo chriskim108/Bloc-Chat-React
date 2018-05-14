@@ -17,7 +17,7 @@ class App extends Component {
 
   activeRoomSelected(room){
     let roomSelected = room;
-    this.setState({activeRooms:roomSelected});
+    this.setState({activeRoom:roomSelected});
     console.log(this.state.activeRooms);
   }
   

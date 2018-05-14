@@ -12,10 +12,10 @@ class App extends Component {
         activeRooms: "",
       };
 
-      this.activeRoom = this.activeRoom.bind(this);
+      this.activeRoomSelected = this.activeRoomSelected.bind(this);
     }
 
-  activeRoom(room){
+  activeRoomSelected(room){
     let roomSelected = room;
     this.setState({activeRooms:room});
   }
@@ -26,12 +26,14 @@ class App extends Component {
         {/* Active room should be triggered by clicking on the name of the room in the  RoomList component. */}
         <RoomList 
           firebase={firebase}
-          activeRoom={this.activeRoom} />
+          activeRoom={this.activeRoom} 
+          activeRoomSelected = {(room)=> this.activeRoomSelected(room)} />
         
         {/* Passing in Firebase as a prop */}
         <MessageList
           firebase={firebase}
-          activeRoom={this.activeRoom} />
+          activeRoom={this.activeRoom} 
+          activeRoomSelected = {(room)=> this.activeRoomSelected(room)} />
       </div>
 
         

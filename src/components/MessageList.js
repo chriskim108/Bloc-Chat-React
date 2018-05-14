@@ -18,10 +18,41 @@ class MessageList extends Component{
         })
     }
 
+    createMessage(e){
+        e.preventDefault();
+        // Retriving the values from the input tag
+        let newContent = this.refs.messageOfRoom.value;
+        let newRoomId = this.props.activeRoom;
+        let newSentAt = this.props.firebase.database.ServerValue.TIMESTAMP; 
+         
+        
+        // Pushing it to FireBase
+        this.messageRef.push({ 
+            content:newContent,
+            roomId:newRoomId,
+            sentAt:newSentAt
+        });
+    }
+
     render(){
         return(
             <div>
                 
+                {/* Form to input messages */}
+                <form onSubmit={ this.createMessage.bind(this) } >
+                    <label className="newMessageLabel">Create a new message</label>
+                    
+                    <br/>
+
+                    <input 
+                        type="text" 
+                        ref="messageOfRoom" 
+                        placeholder="Enter Message"/>
+
+                    <input 
+                        type="submit" 
+                        value="Send Message"/>
+                </form>
             </div>
         )
     }

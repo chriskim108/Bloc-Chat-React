@@ -40,7 +40,7 @@ class RoomList extends Component{
     }
 
     selectedRoom(room){
-        this.props.activeRoom(room);
+        this.props.activeRoomSelected(room);
     }
     
     render(){
@@ -50,7 +50,8 @@ class RoomList extends Component{
                 <h1>Created Rooms</h1>
                 {
                     this.state.rooms.map( (data, index) => 
-                        <div key={index}>
+                        <div key={index}
+                             onClick={ ()=>this.props.activeRoomSelected(data.key) }>
                             <p>
                                 {data.name}
                             </p>
@@ -58,7 +59,9 @@ class RoomList extends Component{
                     ) 
                 }
 
+                <h1>Active Rooms</h1>
 
+                
                 <form onSubmit={ this.createRoom.bind(this) } >
                     <label className="newRoomLabel">Create a new room</label>
                     

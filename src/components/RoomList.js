@@ -45,21 +45,20 @@ class RoomList extends Component{
     
     render(){
         return(
-            <div>   
+            <div>
                 
                 <h1>Created Rooms</h1>
                 {
                     this.state.rooms.map( (data, index) => 
-                        <div key={index}
-                             onClick={ ()=>this.props.activeRoomSelected(data.key) }>
+                        <div onClick={ ()=>this.props.activeRoomSelected(data.key) }
+                             key={index} >
+                            
                             <p>
                                 {data.name}
                             </p>
                         </div>
                     ) 
                 }
-
-                <h1>Active Rooms</h1>
 
                 
                 <form onSubmit={ this.createRoom.bind(this) } >

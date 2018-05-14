@@ -17,8 +17,10 @@ class App extends Component {
 
   activeRoomSelected(room){
     let roomSelected = room;
-    this.setState({activeRooms:room});
+    this.setState({activeRooms:roomSelected});
+    console.log(this.state.activeRooms);
   }
+  
   
   render() {
     return (
@@ -27,13 +29,14 @@ class App extends Component {
         <RoomList 
           firebase={firebase}
           activeRoom={this.state.activeRoom} 
-          activeRoomSelected = {(room)=> this.activeRoomSelected(room)} />
+          activeRoomSelected={this.activeRoomSelected.bind(this)} />
         
         {/* Passing in Firebase as a prop */}
         <MessageList
           firebase={firebase}
           activeRoom={this.state.activeRoom} 
-          activeRoomSelected = {(room)=> this.activeRoomSelected(room)} />
+          activeRoomSelected={this.activeRoomSelected.bind(this)}/>
+          {/* activeRoomSelected = {(room)=> this.activeRoomSelected(room)} /> */}
       </div>
 
         

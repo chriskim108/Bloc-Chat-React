@@ -24,7 +24,6 @@ class MessageList extends Component{
         let newContent = this.refs.messageOfRoom.value;
         let newRoomId = this.props.activeRoom;
         let newSentAt = this.props.firebase.database.ServerValue.TIMESTAMP; 
-         
         
         // Pushing it to FireBase
         this.messageRef.push({ 
@@ -37,6 +36,17 @@ class MessageList extends Component{
     render(){
         return(
             <div>
+
+                <h1>Created Messages</h1>
+                {
+                    this.state.messages.map( (data, index) => 
+                        <div key={index}>
+                            <p>
+                                {data.content}
+                            </p>
+                        </div>
+                    ) 
+                }
                 
                 {/* Form to input messages */}
                 <form onSubmit={ this.createMessage.bind(this) } >

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RoomList from "./components/RoomList";
 import MessageList from "./components/MessageList";
+import User from "./components/User";
 import './App.css';
 import * as firebase from 'firebase';
 
@@ -10,9 +11,11 @@ class App extends Component {
 
       this.state = {
         activeRoom: "",
+        userInformation:"",
       };
 
       this.activeRoomSelected = this.activeRoomSelected.bind(this);
+      this.setUser = this.setUser.bind(this);
     }
 
   activeRoomSelected(room){
@@ -20,26 +23,31 @@ class App extends Component {
     this.setState({activeRoom:roomSelected});
     console.log(this.state.activeRooms);
   }
+
+  setUser(user){
+    let authorizedUser = user;
+    this.setState({ userInformation: authorizedUser});
+  }
   
   
   render() {
     return (
       <div className="App">
-        {/* Active room should be triggered by clicking on the name of the room in the  RoomList component. */}
         <RoomList 
           firebase={firebase}
           activeRoom={this.state.activeRoom} 
           activeRoomSelected={this.activeRoomSelected.bind(this)} />
         
-        {/* Passing in Firebase as a prop */}
         <MessageList
           firebase={firebase}
           activeRoom={this.state.activeRoom} 
           activeRoomSelected={this.activeRoomSelected.bind(this)}/>
-          {/* activeRoomSelected = {(room)=> this.activeRoomSelected(room)} /> */}
-      </div>
 
-        
+        <User 
+          firebase={firebase}
+          userInformation={this.state.userInformation}
+          setUser={this.setUser.bind(this)}/>
+      </div>
     );
   }
 }

@@ -42,6 +42,7 @@ class App extends Component {
           firebase={firebase}
           activeRoom={this.state.activeRoom} 
           activeRoomSelected={this.activeRoomSelected.bind(this)}
+          userInformation={this.state.userInformation}
           setUser={this.setUser.bind(this)}/>
 
         <User 

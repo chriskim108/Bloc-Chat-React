@@ -8,7 +8,15 @@ class User extends Component{
         this.state = {
             userMessage:[],
         }
-        this.messageRef = this.props.firebase.database().ref('messages');
+
+        // this.userRef = this.props.firebase.database().ref('users');
+        
+    }
+
+    componentDidMount(){
+        this.props.firebase.auth().onAuthStateChanged( user => {
+            this.props.setUser(user);
+        });
     }
 
     signInWithPopup(){
@@ -20,6 +28,7 @@ class User extends Component{
         this.props.firebase.auth().signOut();
     }
 
+
     render(){
         return(
             <div>
@@ -28,10 +37,9 @@ class User extends Component{
                 </div>
 
                 <div>
-                    { this.props.userInformation ? this.props.userInformation.displayName : "Guest"    }
-                    {console.log(this.props.userInformation)}
+                    { this.props.userInformation ? this.props.userInformation.displayName : "Guest" }
                 </div>
-
+ 
                 <button onClick={this.signInWithPopup.bind(this)}>
                     Sign In
                 </button>

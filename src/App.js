@@ -27,6 +27,7 @@ class App extends Component {
   setUser(user){
     let authorizedUser = user;
     this.setState({ userInformation: authorizedUser});
+    console.log(authorizedUser);
   }
   
   

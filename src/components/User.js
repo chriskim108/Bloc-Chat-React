@@ -7,10 +7,7 @@ class User extends Component{
 
         this.state = {
             userMessage:[],
-        }
-
-        // this.userRef = this.props.firebase.database().ref('users');
-        
+        }        
     }
 
     componentDidMount(){
@@ -32,7 +29,7 @@ class User extends Component{
     render(){
         return(
             <div>
-                <div>
+                <div> 
                     <h3>Current User </h3>
                 </div>
 

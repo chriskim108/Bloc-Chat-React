@@ -25,18 +25,16 @@ class MessageList extends Component{
         let newContent = this.refs.messageOfRoom.value;
         let newRoomId = this.props.activeRoom;        
         let newSentAt = this.props.firebase.database.ServerValue.TIMESTAMP; 
-        // This does not work 
         let newUser = this.props.userInformation ? this.props.userInformation.displayName : "Guest";        
-        
+
         // Pushing it to FireBase
         this.messageRef.push({ 
             content:newContent,
             roomId:newRoomId,
             sentAt:newSentAt,
-            username:newUser,
+            username:newUser
         });
-
-        console.log(newRoomId + " Test");
+        
         console.log("NEW USER HERE: " + newUser);        
     }
 
@@ -52,7 +50,15 @@ class MessageList extends Component{
                 {
                     filteredMessages.map( (data, index) => 
                         <div key={index}>
-                            {data.content} {data.username}
+                            <h1>{data.content}</h1>    
+
+                            <br/>
+                        
+                            <em>
+                                <strong>
+                                    {data.username}                             
+                                </strong>
+                            </em>
                         </div>
                     ) 
                 }

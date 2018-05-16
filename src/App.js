@@ -30,7 +30,6 @@ class App extends Component {
     console.log(authorizedUser);
   }
   
-  
   render() {
     return (
       <div className="App">

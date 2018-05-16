@@ -41,8 +41,29 @@ class MessageList extends Component{
         let filteredMessages = this.state.messages.filter(message => message.roomId === this.props.activeRoom);
         console.log("Filtered " + this.state.messages.length + " messages down to " + filteredMessages.length + " active messages.");
 
-        let username = this.props.setUser ? this.props.userInformation.displayName : " Guest";
+        // let username = this.props.setUser ? this.props.userInformation.displayName : " Guest";
+        // console.log(this.props.userInformation.displayName);
+        // let userName = this.props.userInformation.displayName;
+        // let userName = this.props.userInformation;        
+        // if(userName == null){
+        //     let userName = "Guest";
+        //     return userName;
+        // }else{
+        //     let userName = "Hello";
+        //     return userName;
+        // }
+        // console.log(this.props.userInformation.displayName)
+        // console.log(userName + "Over here");
         
+        // console.log(this.props.activeRoomSelected.displayName)
+
+        // let userName = this.props.userInformation;
+        // if (!userName) {
+        //   userName = "Guest";
+        // }
+        // console.log(userName);
+        // return userName.displayName;
+
         return(
             <div>
 
@@ -50,7 +71,7 @@ class MessageList extends Component{
                 {
                     filteredMessages.map( (data, index) => 
                         <div key={index}>
-                            {data.content} {username}
+                            {data.content}
                         </div>
                     ) 
                 }

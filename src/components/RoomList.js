@@ -48,6 +48,11 @@ class RoomList extends Component{
     selectedRoom(room){
         this.props.activeRoomSelected(room);
     }
+
+    deleteRoom(roomId) {
+        let remainRooms = this.state.rooms.filter(room => room.key !== roomId);
+        this.setState({ rooms: remainRooms});
+    }
     
     render(){
         return(
@@ -62,6 +67,10 @@ class RoomList extends Component{
                             <p>
                                 {data.name}
                             </p>
+
+                            <button onClick={() => this.deleteRoom(data.key)}>
+                                Remove Room
+                            </button>
                         </div>
                     ) 
                 }

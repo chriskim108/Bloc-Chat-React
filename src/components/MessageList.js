@@ -38,6 +38,11 @@ class MessageList extends Component{
         console.log("NEW USER HERE: " + newUser);        
     }
 
+    deleteMessage(messageId) {
+        let remainMessages= this.state.messages.filter(message => message.key !== messageId);
+        this.setState({ messages: remainMessages});
+    }
+
     render(){
 
         let filteredMessages = this.state.messages.filter(message => message.roomId === this.props.activeRoom);
@@ -59,6 +64,10 @@ class MessageList extends Component{
                                     {data.username}                             
                                 </strong>
                             </em>
+
+                            <button onClick={() => this.deleteMessage(data.key)}>
+                                Remove Message
+                            </button>
                         </div>
                     ) 
                 }

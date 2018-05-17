@@ -21,6 +21,12 @@ class RoomList extends Component{
             room.key = snapshot.key;
             this.setState({ rooms: this.state.rooms.concat( room ) })
         })
+
+        this.roomsRef.on("child_removed", snapshot => {
+            const deletedRoom = snapshot.val();
+            deletedRoom.key = snapshot.key;
+            this.setState({ rooms: this.state.rooms.pop( deletedRoom ) })
+        })
     }
 
     handleChange(e){
